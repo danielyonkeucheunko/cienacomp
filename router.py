@@ -11,7 +11,7 @@ def print_cli_history(history):
 
 def swap_state(file_path, history, t):
     state_values, control_values, signal_values = read_hardware_state(file_path)
-    history.append(f"{t} set {state_values[0]} {state_values[1]}")
+    history.append(f"{t} swap {state_values[0]} {state_values[1]}")
     state_values[0], state_values[1] = state_values[1], state_values[0]
     write_hardware_state(file_path, state_values, control_values, signal_values)
 
