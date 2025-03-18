@@ -83,8 +83,6 @@ def main():
         # Swap 
         if t % 10 == 0:
             swap_state(file_path,history, t)
-                
-
 
         # Write Your Code Here End
 

@@ -59,6 +59,11 @@ def create_hardware_file(file_path):
     initial_signal_values = [0, 0]
     write_hardware_state(file_path, initial_state_values, initial_control_values, initial_signal_values)
 
+def swap_state(file_path):
+    state_values, control_values, signal_values = read_hardware_state(file_path)
+    state_values[0], state_values[1] = state_values[1], state_values[0]
+    write_hardware_state(file_path, state_values, control_values, signal_values)
+
 def main():
     # Create the hardware file if it doesn't exist
     try:
@@ -78,6 +83,9 @@ def main():
             random_index = random.randint(1, 4)  # Generate a random index
             random_value = random.randint(1, 8)  # Generate a random value
             mutate_signal(file_path, random_index, random_value)
+
+        if(t % 10 == 0):
+            swap_state(file_path)
 
         time.sleep(1)  # Wait for 1 second before polling again
 
