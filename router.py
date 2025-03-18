@@ -9,6 +9,12 @@ def print_cli_history(history):
     for entry in history:
         print(entry)
 
+def swap_state(file_path, history, t):
+    state_values, control_values, signal_values = read_hardware_state(file_path)
+    history.append(f"{t} set {state_values[0]} {state_values[1]}")
+    state_values[0], state_values[1] = state_values[1], state_values[0]
+    write_hardware_state(file_path, state_values, control_values, signal_values)
+
 def process_cli_input(file_path, history, t):
     # Process CLI input here
     try:
@@ -35,7 +41,7 @@ def main():
         t += 1
 
         # Write Your Code Here Start
-
+        
         # Write Your Code Here End
 
         time.sleep(1)  # Wait for 1 second before polling again
