@@ -30,7 +30,7 @@ def process_cli_input(file_path, history, t):
                 history.append(f"{t} set {index} {value}")
     except Exception as e:
         print(f"Invalid Input - Error: {str(e)}")
-
+#Group 3: Daniel Yonkeu-Cheunko, Ahmad Mohamad, Agrim Kasaju
 def main():
     history = []
     t = 0
@@ -63,7 +63,11 @@ def main():
             
             # If user selects 2, handle control traffic
             case 2:
-                mutate_hardware(file_path, signal_values[0] - 1, signal_values[1])
+
+                if signal_values[0] < 1 or signal_values[0] > 4 :
+                    print(f"Index Value has to be between 1-4: index={signal_values[0]}")
+                else:
+                    mutate_hardware(file_path, signal_values[0] - 1, signal_values[1])
             
             # If user selects 3, manage functionality
             case 3:
